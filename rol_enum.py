@@ -2,5 +2,5 @@ from enum import Enum
 
 class Roles(Enum):
     ADMINISTRADOR = "Administrador"
-    USERIO = "Usuario"
+    USUARIO = "Usuario"
     INVITADO = "Invitado"
