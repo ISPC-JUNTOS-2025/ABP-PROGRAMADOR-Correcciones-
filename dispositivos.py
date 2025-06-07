@@ -2,7 +2,24 @@ from datetime import datetime
 
 lista_de_dispositivos = []
 lista_de_automatizaciones = []
-id_dispositivo = 1
+
+lista_de_dispositivos = [{
+        "Id": 1,
+        "Tipo Dispositivo": "luces",
+        "Nombre Dispositivo": "luces" ,
+        "Estado Dispositivo": False, 
+        "Fecha de Creacion": datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+    }, 
+    {
+        "Id": 2,
+        "Tipo Dispositivo": "electrodomestico",
+        "Nombre Dispositivo": "lavarropas",
+        "Estado Dispositivo": False, 
+        "Fecha de Creacion": datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+    }
+    ]
+
+id_dispositivo = 3
 
 def crear_dispositivo(tipo_dispositivo, nombre_dispositivo):
     global id_dispositivo
@@ -40,9 +57,7 @@ def listar_dispositivos():
         print("Tipo Dispositivo:", dispositivo["Tipo Dispositivo"])
         print("Nombre Dispositivo:", dispositivo["Nombre Dispositivo"])
         print("Estado:", "Encendido" if dispositivo["Estado Dispositivo"] else "Apagado")
-        print("-" * 40) 
-        return dispositivo 
-
+        print("-" * 40)   
 
 def eliminar_dispositivo_por_nombre(nombre_dispositivo):
     for dispositivo in lista_de_dispositivos:
@@ -52,14 +67,9 @@ def eliminar_dispositivo_por_nombre(nombre_dispositivo):
 
     return print(f"No se encontro el dispositivo: {nombre_dispositivo}")
 
+def devolver_lista_de_dispositivos():
+    return lista_de_dispositivos
 
-def automatizacion_encender_luces():
-    print("movimiento detectado en entrada principal")
 
-    for dispositivo in lista_de_dispositivos:
-        if dispositivo["Nombre Dispositivo"] == "luces".lower() and dispositivo["Estado Dispositivo"] == False:
-            dispositivo["Estado Dispositivo"] = True
-            return print("luces entrada principal encendidas")
-            
 
-    return print("No se han detectado luces a encender")    
+

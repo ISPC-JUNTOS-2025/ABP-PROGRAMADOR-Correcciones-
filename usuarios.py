@@ -60,8 +60,6 @@ def iniciar_sesion(email_usuario, contraseña_usuario):
         return None
 
 
-#Login(Luciana) - 20 lineas
-
 def consultar_datos_personales(email_usuario):
     try:
         for usuario in lista_de_usuarios:
@@ -72,3 +70,4 @@ def consultar_datos_personales(email_usuario):
             print(f"Email: {usuario['Email']}")
     except ValueError as error:
         print(f"Error: {error}")
+
