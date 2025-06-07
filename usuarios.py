@@ -34,11 +34,10 @@ def registrar_usuario(nombre_de_usuario,email_usuario,contraseña_de_usuario):
 #Login(giuliano) - 20 lineas
 
 
-
 def iniciar_sesion(email_usuario, contraseña_usuario):
     try:
         # Verifica que no estén vacíos
-        if email_usuario.strip() == "" or contraseña_usuario.strip() == "":
+        if email_usuario == "" or contraseña_usuario == " ":
             raise ValueError("El email y la contraseña no pueden estar vacíos.")
 
         # Buscar el usuario
