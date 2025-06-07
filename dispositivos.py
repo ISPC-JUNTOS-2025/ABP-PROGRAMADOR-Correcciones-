@@ -2,6 +2,8 @@ from datetime import datetime
 
 dispositivos = []
 
+lista_de_automatizaciones = []
+
 id_dispositivo = 1
 
 
@@ -69,3 +71,5 @@ def automatizacion_encender_luces():
             
 
     return print("No se han detectado luces a encender")    
+
+
