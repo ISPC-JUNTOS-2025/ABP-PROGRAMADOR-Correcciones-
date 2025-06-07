@@ -1,9 +1,8 @@
 from datetime import datetime
 
 lista_de_dispositivos = []
-
+lista_de_automatizaciones = []
 id_dispositivo = 1
-
 
 def crear_dispositivo(tipo_dispositivo, nombre_dispositivo):
     global id_dispositivo
@@ -40,8 +39,9 @@ def listar_dispositivos():
     for dispositivo in lista_de_dispositivos:
         print("Tipo Dispositivo:", dispositivo["Tipo Dispositivo"])
         print("Nombre Dispositivo:", dispositivo["Nombre Dispositivo"])
-        print("Estado:", "Encendido" if dispositivo["Estado"] else "Apagado")
-        print("-" * 40)  
+        print("Estado:", "Encendido" if dispositivo["Estado Dispositivo"] else "Apagado")
+        print("-" * 40) 
+        return dispositivo 
 
 
 def eliminar_dispositivo_por_nombre(nombre_dispositivo):
