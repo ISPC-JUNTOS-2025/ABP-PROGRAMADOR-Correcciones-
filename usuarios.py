@@ -29,11 +29,15 @@ def registrar_usuario(nombre_de_usuario,email_usuario,contraseña_de_usuario):
         return print(usuario)
     except ValueError as error:
         print(f"Error: {error}")
+#-------------------------------------------------------------
+
+#Login(giuliano) - 20 lineas
+
 
 def iniciar_sesion(email_usuario, contraseña_usuario):
     try:
         # Verifica que no estén vacíos
-        if email_usuario.strip() == "" or contraseña_usuario.strip() == "":
+        if email_usuario == "" or contraseña_usuario == " ":
             raise ValueError("El email y la contraseña no pueden estar vacíos.")
 
         # Buscar el usuario
@@ -56,67 +60,19 @@ def iniciar_sesion(email_usuario, contraseña_usuario):
         return None
 
 
+#Login(Luciana) - 20 lineas
 
+def consultar_datos_personales(email_usuario):
+    try:
+        for usuario in lista_de_usuarios:
+            if email_usuario not in usuario["Email"]:
+                raise ValueError("No se encontro un usuario con ese email")
+            print("\n--- DATOS PERSONALES ---")
+            print(f"Nombre: {usuario['Nombre']}")
+            print(f"Email: {usuario['Email']}")
+    except ValueError as error:
+        print(f"Error: {error}")
 
-
-
-
-
-
-
-
-
-
-
-
-
-#-------------------------------------------------------------
-
-#Login(giuliano) - 20 lineas
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#------------------------------------------------------------
-
-#Datos Usuario(lu) - 20 Lineas
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#-------------------------------------------------------------------
-
-#Asignacion de roles(JuanX) - 20 Lineas
 
 
 def cambiar_rol_usuario():
@@ -129,18 +85,4 @@ def cambiar_rol_usuario():
         print("No se encontró un usuario con rol válido para cambiar")
     except ValueError as error:
         print(f"Error: {error}")
-
-
-# cambiar_rol_usuario()
-#-------------------------------------------------------------
-
-#Login(giuliano) - 20 lineas
-
-
-
-
-
-
-
-
 
