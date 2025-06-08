@@ -29,9 +29,6 @@ def registrar_usuario(nombre_de_usuario,email_usuario,contraseña_de_usuario):
         return print(usuario)
     except ValueError as error:
         print(f"Error: {error}")
-#-------------------------------------------------------------
-
-#Login(giuliano) - 20 lineas
 
 
 def iniciar_sesion(email_usuario, contraseña_usuario):
