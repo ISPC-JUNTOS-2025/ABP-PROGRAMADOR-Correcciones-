@@ -59,11 +59,11 @@ def iniciar_sesion(email_usuario, contraseña_usuario):
 def consultar_datos_personales(email_usuario):
     try:
         for usuario in lista_de_usuarios:
-            if email_usuario not in usuario["Email"]:
-                raise ValueError("No se encontro un usuario con ese email")
-            print("\n--- DATOS PERSONALES ---")
-            print(f"Nombre: {usuario['Nombre']}")
-            print(f"Email: {usuario['Email']}")
+            if email_usuario == usuario["Email"]: 
+                print("\n--- DATOS PERSONALES ---")
+                print(f"Nombre: {usuario['Nombre']}")
+                print(f"Email: {usuario['Email']}")
+        raise ValueError("No se encontro un usuario con ese email")
     except ValueError as error:
         print(f"Error: {error}")
 
