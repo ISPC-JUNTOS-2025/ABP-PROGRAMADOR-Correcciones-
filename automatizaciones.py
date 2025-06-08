@@ -1,20 +1,28 @@
+from datetime import datetime
 from dispositivos import devolver_lista_de_dispositivos
 
 lista_de_dispositivos = devolver_lista_de_dispositivos()
-lista_de_automatizaciones = []
+lista_de_automatizaciones = [{
+        "Id Dispositivo": 1,
+        "Tipo Dispositivo": "luces",
+        "Nombre Dispositivo": "luces",
+        "Estado Dispositivo": True,
+        "Estado Automatizacion": True, 
+        "Fecha de Creacion": datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+    }]
 
 
 def activar_automatizacion_encender_luces():
-    print("automatizacion encendido activada")
-
-    for dispositivo in lista_de_dispositivos:
-        if dispositivo["Nombre Dispositivo"] == "luces".lower() and dispositivo["Estado Dispositivo"] == False:
-            dispositivo["Estado Dispositivo"] = True
-            dispositivo["Estado Automatizacion"] = True
-            lista_de_automatizaciones.append(dispositivo)
-            return print("automatizacion encendido de luces activada")
-
-    return print("No se han detectado luces a encender")
+    try:
+        for dispositivo in lista_de_dispositivos:
+            if dispositivo["Nombre Dispositivo"] == "luces".lower() and dispositivo["Estado Dispositivo"] == False:
+                dispositivo["Estado Dispositivo"] = True
+                dispositivo["Estado Automatizacion"] = True
+                lista_de_automatizaciones.append(dispositivo)
+                return print("automatizacion encendido de luces activada")
+        raise ValueError("No se han detectado luces a encender")
+    except ValueError as error:
+        print(f"Error: {error}")
 
 
 def desactivar_automatizacion_encender_luces():
@@ -42,7 +50,6 @@ def consultar_automatizaciones_activas():
     except ValueError as error:
         print(f"Error: {error}")
               
-
 
 while True:
     print(" " * 10)     

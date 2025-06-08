@@ -4,14 +4,14 @@ lista_de_dispositivos = []
 lista_de_automatizaciones = []
 
 lista_de_dispositivos = [{
-        "Id": 1,
+        "Id Dispositivo": 1,
         "Tipo Dispositivo": "luces",
         "Nombre Dispositivo": "luces" ,
         "Estado Dispositivo": False, 
         "Fecha de Creacion": datetime.now().strftime("%d-%m-%Y %H:%M:%S")
     }, 
     {
-        "Id": 2,
+        "Id Dispositivo": 2,
         "Tipo Dispositivo": "electrodomestico",
         "Nombre Dispositivo": "lavarropas",
         "Estado Dispositivo": False, 
@@ -25,7 +25,7 @@ def crear_dispositivo(tipo_dispositivo, nombre_dispositivo):
     global id_dispositivo
 
     nuevo_dispositivo = {
-        "Id": id_dispositivo,
+        "Id Dispositivo": id_dispositivo,
         "Tipo Dispositivo": tipo_dispositivo,
         "Nombre Dispositivo": nombre_dispositivo,
         "Estado Dispositivo": False, 
