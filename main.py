@@ -1,53 +1,24 @@
+import usuarios
 import dispositivos
+import automatizaciones
 
-opcion_menu = ""
+def menu_usuario(user):
+    while True:
+        print("\n--- Menú Usuario ---")
+        print("1. Consultar datos personales")
+        print("2. Activar automatización")
+        print("3. Consultar dispositivos")
+        print("4. Cerrar sesión")
+        opcion = input("Elige una opción: ")
 
-while True:
-    print(" " * 10)     
-    print("*******************************")
-    print("*                             *")
-    print("*       SmartHome Menu        *")
-    print("*                             *")
-    print("*******************************")
-    print("1. Agregar dispositivo")
-    print("2. Listar dispositivos")
-    print("3. Buscar dispositivo")
-    print("4. Borrar dispositivo")
-    print("5. Activar Automatizacion")  
-    print("6. Salir")  
-    print(" " * 10)                                             
-
-    opcion_menu = input("Seleccione una opción (1-6): ")
-
-    match opcion_menu:
-        case "1":
-            tipo_dispositivo = input("Ingrese el tipo de dispositivo: ").lower()
-            nombre_dispositivo = input("Ingrese el nombre del dispositivo: ").lower()
-            dispositivos.crear_dispositivo(tipo_dispositivo, nombre_dispositivo)
-            pass
-
-        case "2":
-            dispositivos.listar_dispositivos()
-            pass
-
-        case "3":
-            nombre_dispositivo = input("Ingrese el nombre del dispositivo a buscar: ")
-            dispositivos.buscar_dispositivo_por_nombre(nombre_dispositivo)
-            pass
-
-        case "4":
-            nombre_dispositivo = input("Ingrese el nombre del dispositivo a eliminar: ")
-            dispositivos.eliminar_dispositivo_por_nombre(nombre_dispositivo)
-            pass
-
-        case "5":
-            dispositivos.automatizacion_encender_luces()
-    
-        case "6":
-            print("Finalizando Aplicacion")
-            break
-        
-        case _:
-            print("Opcion invalida")
-
-        
+        match opcion:
+            case "1":
+                usuarios.consultar_datos_personales(user["Email"])
+            case "2":
+                automatizaciones.menu_automatizaciones()
+            case "3":
+                dispositivos.listardispositivos()
+            case "4":
+                break
+            case :
+                print("Opción inválida")
