@@ -33,29 +33,28 @@ def registrar_usuario(nombre_de_usuario,email_usuario,contraseña_de_usuario):
 
 def iniciar_sesion(email_usuario, contraseña_usuario):
     try:
-        # Verifica que no estén vacíos
-        if email_usuario == "" or contraseña_usuario == " ":
+        if contraseña_usuario == ' ' or contraseña_usuario == '':
             raise ValueError("El email y la contraseña no pueden estar vacíos.")
+        
+        utilidades.verificar_email(email_usuario)
 
-        # Buscar el usuario
-        usuario_encontrado = next((u for u in lista_de_usuarios if u["Email"] == email_usuario), None)
+        usuario_encontrado = None
+        for usuario in lista_de_usuarios:
+            if usuario["Email"] == email_usuario:
+                usuario_encontrado = usuario
 
-        if not usuario_encontrado:
-            raise ValueError("No se encontró un usuario con ese email.")
+        contraseña_desencriptada = utilidades.desencriptar_contraseña(usuario_encontrado["Contraseña"])
 
-        # Encriptar la contraseña ingresada para compararla
-        contraseña_encriptada = utilidades.encriptar_contraseña(contraseña_usuario)
-
-        if usuario_encontrado["Contraseña"] != contraseña_encriptada:
-            raise ValueError("La contraseña es incorrecta.")
+        if usuario_encontrado["Contraseña"] != contraseña_desencriptada:
+            raise ValueError("El email o contraseña es incorrecta.")
 
         print(f"Inicio de sesión exitoso. Bienvenido, {usuario_encontrado['Nombre']}.")
+         
         return usuario_encontrado
 
     except ValueError as error:
         print(f"Error: {error}")
         return None
-
 
 def consultar_datos_personales(email_usuario):
     try:
@@ -65,6 +64,18 @@ def consultar_datos_personales(email_usuario):
             print("\n--- DATOS PERSONALES ---")
             print(f"Nombre: {usuario['Nombre']}")
             print(f"Email: {usuario['Email']}")
+    except ValueError as error:
+        print(f"Error: {error}")
+
+
+def cambiar_rol_usuario():
+    try:
+        for usuario in lista_de_usuarios: 
+            if usuario["Rol"]==rol_enum.Roles.USUARIO or rol_enum.Roles.INVITADO:
+                usuario["Rol"] = rol_enum.Roles.ADMINISTRADOR
+                print(f"{usuario['Nombre']} ahora es ADMINISTRADOR")
+                return
+        print("No se encontró un usuario con rol válido para cambiar")
     except ValueError as error:
         print(f"Error: {error}")
 
