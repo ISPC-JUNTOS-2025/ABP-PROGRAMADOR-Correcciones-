@@ -98,4 +98,5 @@ def cambiar_rol_usuario(nombre_usuario):
         raise ValueError("No se encontro el usuario: " + nombre_usuario)
     except ValueError as error:
         print(f"Error: {error}")
+        
 
