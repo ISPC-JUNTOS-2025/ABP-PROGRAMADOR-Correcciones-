@@ -33,20 +33,23 @@ def registrar_usuario(nombre_de_usuario,email_usuario,contraseña_de_usuario):
 
 def iniciar_sesion(email_usuario, contraseña_usuario):
     try:
-        if email_usuario == "" or contraseña_usuario == " ":
+        if contraseña_usuario == ' ' or contraseña_usuario == '':
             raise ValueError("El email y la contraseña no pueden estar vacíos.")
+        
+        utilidades.verificar_email(email_usuario)
 
-        usuario_encontrado = next((u for u in lista_de_usuarios if u["Email"] == email_usuario), None)
+        usuario_encontrado = None
+        for usuario in lista_de_usuarios:
+            if usuario["Email"] == email_usuario:
+                usuario_encontrado = usuario
 
-        if not usuario_encontrado:
-            raise ValueError("No se encontró un usuario con ese email.")
+        contraseña_desencriptada = utilidades.desencriptar_contraseña(usuario_encontrado["Contraseña"])
 
-        contraseña_encriptada = utilidades.encriptar_contraseña(contraseña_usuario)
-
-        if usuario_encontrado["Contraseña"] != contraseña_encriptada:
-            raise ValueError("La contraseña es incorrecta.")
+        if usuario_encontrado["Contraseña"] != contraseña_desencriptada:
+            raise ValueError("El email o contraseña es incorrecta.")
 
         print(f"Inicio de sesión exitoso. Bienvenido, {usuario_encontrado['Nombre']}.")
+         
         return usuario_encontrado
 
     except ValueError as error:
