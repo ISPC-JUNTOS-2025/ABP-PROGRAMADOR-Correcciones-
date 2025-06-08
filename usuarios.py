@@ -69,14 +69,15 @@ def consultar_datos_personales(email_usuario):
         print(f"Error: {error}")
 
 
-def cambiar_rol_usuario():
+def cambiar_rol_usuario(nombre_usuario):
     try:
         for usuario in lista_de_usuarios: 
-            if usuario["Rol"]==rol_enum.Roles.USUARIO or rol_enum.Roles.INVITADO:
+            if usuario["Nombre"] == nombre_usuario:
                 usuario["Rol"] = rol_enum.Roles.ADMINISTRADOR
                 print(f"{usuario['Nombre']} ahora es ADMINISTRADOR")
                 return
-        print("No se encontró un usuario con rol válido para cambiar")
+        raise ValueError("No se encontro el usuario: " + nombre_usuario)
     except ValueError as error:
         print(f"Error: {error}")
+        
 
