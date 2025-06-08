@@ -44,3 +44,33 @@ def menu_admin():
                 break
             case :
                 print("Opción inválida")
+
+
+def menu_gestion_dispositivos():
+    while True:
+        print("\n--- Gestión de Dispositivos ---")
+        print("1. Agregar dispositivo")
+        print("2. Listar dispositivos")
+        print("3. Buscar dispositivo")
+        print("4. Eliminar dispositivo")
+        print("5. Volver")
+        opcion = input("Seleccione una opción: ")
+
+        match opcion:
+            case "1":
+                tipo = input("Tipo de dispositivo: ")
+                nombre = input("Nombre del dispositivo: ")
+                dispositivos.crear_dispositivo(tipo, nombre)
+            case "2":
+                dispositivos.listar_dispositivos()
+            case "3":
+                nombre = input("Nombre a buscar: ")
+                dispositivos.buscar_dispositivo_por_nombre(nombre)
+            case "4":
+                nombre = input("Nombre a eliminar: ")
+                dispositivos.eliminar_dispositivo_pornombre(nombre)
+            case "5":
+                break
+            case :
+                print("Opción inválida.")
+
