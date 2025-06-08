@@ -1,53 +1,38 @@
-import dispositivos
 
-opcion_menu = ""
 
-while True:
-    print(" " * 10)     
-    print("*******************************")
-    print("*                             *")
-    print("*       SmartHome Menu        *")
-    print("*                             *")
-    print("*******************************")
-    print("1. Agregar dispositivo")
-    print("2. Listar dispositivos")
-    print("3. Buscar dispositivo")
-    print("4. Borrar dispositivo")
-    print("5. Activar Automatizacion")  
-    print("6. Salir")  
-    print(" " * 10)                                             
+def main():
+    while True:
+        print("\n=== SmartHome ===")
+        print("1. Registrarse")
+        print("2. Iniciar sesión")
+        print("3. Salir")
+        opcion = input("Elige una opción: ")
 
-    opcion_menu = input("Seleccione una opción (1-6): ")
+        match opcion:
+            case "1":
+                nombre = input("Nombre: ")
+                email = input("Email: ")
+                contraseña = input("Contraseña: ")
+                usuarios.registrar_usuario(nombre, email, contraseña)
 
-    match opcion_menu:
-        case "1":
-            tipo_dispositivo = input("Ingrese el tipo de dispositivo: ").lower()
-            nombre_dispositivo = input("Ingrese el nombre del dispositivo: ").lower()
-            dispositivos.crear_dispositivo(tipo_dispositivo, nombre_dispositivo)
-            pass
+            case "2":
+                email = input("Email: ")
+                contraseña = input("Contraseña: ")
+                user = usuarios.iniciar_sesion(email, contraseña)
+                if user:
+                    if user["Rol"] == rol_enum.Roles.ADMINISTRADOR:
+                        menu_admin()
+                    else:
+                        menu_usuario(user)
 
-        case "2":
-            dispositivos.listar_dispositivos()
-            pass
+            case "3":
+                print("Saliendo del sistema. ¡Hasta luego!")
+                break
 
-        case "3":
-            nombre_dispositivo = input("Ingrese el nombre del dispositivo a buscar: ")
-            dispositivos.buscar_dispositivo_por_nombre(nombre_dispositivo)
-            pass
+            case _:
+                print("Opción inválida.")
 
-        case "4":
-            nombre_dispositivo = input("Ingrese el nombre del dispositivo a eliminar: ")
-            dispositivos.eliminar_dispositivo_por_nombre(nombre_dispositivo)
-            pass
+main()
 
-        case "5":
-            dispositivos.automatizacion_encender_luces()
-    
-        case "6":
-            print("Finalizando Aplicacion")
-            break
-        
-        case _:
-            print("Opcion invalida")
 
         
