@@ -22,3 +22,25 @@ def menu_usuario(user):
                 break
             case :
                 print("Opción inválida")
+
+def menu_admin():
+    while True:
+        print("\n--- Menú Admin ---")
+        print("1. Consultar automatizaciones")
+        print("2. Gestionar dispositivos")
+        print("3. Cambiar rol a usuarios")
+        print("4. Cerrar sesión")
+        opcion = input("Elige una opción: ")
+
+        match opcion:
+            case "1":
+                automatizaciones.consultar_automatizaciones_activas()
+            case "2":
+                menu_gestion_dispositivos()
+            case "3":
+                nuevo_rol = input("Ingrese el nombre del usuario: ")
+                usuarios.cambiar_rol_usuario(nuevorol)
+            case "4":
+                break
+            case :
+                print("Opción inválida")
