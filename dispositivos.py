@@ -59,7 +59,6 @@ def listar_dispositivos():
        return print("No se ha encontrado ningún dispositivo")
         
     for dispositivo in lista_de_dispositivos:
-        print("-" * 40)
         print("Tipo Dispositivo:", dispositivo["Tipo Dispositivo"])
         print("Nombre Dispositivo:", dispositivo["Nombre Dispositivo"])
         print("Estado:", "Encendido" if dispositivo["Estado Dispositivo"] else "Apagado")
