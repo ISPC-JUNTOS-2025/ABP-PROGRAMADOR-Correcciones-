@@ -63,6 +63,7 @@ def consultar_datos_personales(email_usuario):
                 print("\n--- DATOS PERSONALES ---")
                 print(f"Nombre: {usuario['Nombre']}")
                 print(f"Email: {usuario['Email']}")
+                return
         raise ValueError("No se encontro un usuario con ese email")
     except ValueError as error:
         print(f"Error: {error}")
